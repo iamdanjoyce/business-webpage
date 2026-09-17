@@ -1,0 +1,30 @@
+{
+  "hero_eyebrow": "Serving Bishop Auckland & County Durham",
+  "open_tag": "Open for new projects this month",
+  "pricing": [
+    {
+      "name": "Starter",
+      "price": "480",
+      "period": "one-off",
+      "description": "A single, well-built page for a trade or small shop that just needs to be found and contacted."
+    },
+    {
+      "name": "Business",
+      "price": "950",
+      "period": "one-off",
+      "description": "A full site for a business with more to show: services, gallery, reviews, and a way for people to enquire or book."
+    },
+    {
+      "name": "Care plan",
+      "price": "39",
+      "period": "per month",
+      "description": "Ongoing hosting, updates and small edits, so the site stays current without you needing to touch it."
+    }
+  ],
+  "about_paragraph_1": "I'm Dan — I build websites for the independent businesses around Bishop Auckland and County Durham, from cafés on Newgate Street to trades working across the Dales. I've been the customer standing outside a shop checking Google for opening hours that turned out to be wrong, or a phone number that didn't connect. That's the gap I fix.",
+  "about_paragraph_2": "You get plain-English advice, a site that actually loads quickly on a phone in a car park with two bars of signal, and someone local who'll pick up the phone.",
+  "about_heading": "Based in Bishop Auckland, not a call centre",
+  "contact_email": "contact@iamdanjoyce.com",
+  "hero_heading": "Websites that get your business found on the high street of the internet.",
+  "hero_lede": "I design and build fast, easy-to-manage websites for independent shops, trades and services around Bishop Auckland — so people searching nearby find you first, not the big chains."
+}

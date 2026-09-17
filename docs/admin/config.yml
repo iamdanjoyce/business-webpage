@@ -1,0 +1,34 @@
+backend:
+  name: github
+  repo: iamdanjoyce/business-webpage
+  branch: main
+
+local_backend: true
+
+media_folder: "docs/images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Website content"
+    files:
+      - name: "settings"
+        label: "Site text & pricing"
+        file: "docs/content/settings.json"
+        fields:
+          - { label: "Hero eyebrow (small line above the headline)", name: "hero_eyebrow", widget: "string" }
+          - { label: "Hero headline", name: "hero_heading", widget: "text" }
+          - { label: "Hero subtext", name: "hero_lede", widget: "text" }
+          - { label: "\"Open for new projects\" tag", name: "open_tag", widget: "string" }
+          - { label: "About section heading", name: "about_heading", widget: "string" }
+          - { label: "About paragraph 1", name: "about_paragraph_1", widget: "text" }
+          - { label: "About paragraph 2", name: "about_paragraph_2", widget: "text" }
+          - { label: "Contact email", name: "contact_email", widget: "string" }
+          - label: "Pricing tiers"
+            name: "pricing"
+            widget: "list"
+            fields:
+              - { label: "Tier name", name: "name", widget: "string" }
+              - { label: "Price (numbers only)", name: "price", widget: "string" }
+              - { label: "Period (e.g. one-off, per month)", name: "period", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
