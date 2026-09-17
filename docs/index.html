@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dan Joyce Web Design</title>
+<meta name="description" content="Websites for independent shops, trades and services around Bishop Auckland and County Durham.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Karla:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F1EEE4;
+    --surface:#FFFFFF;
+    --surface-dim:#E9E4D5;
+    --text:#16212C;
+    --text-soft:rgba(22,33,44,0.66);
+    --accent:#C79A3E;
+    --accent-strong:#AD8330;
+    --accent-ink:#16212C;
+    --brand-deep:#1F3A5C;
+    --brand-deep-2:#16293F;
+    --brand-deep-text:#F1EEE4;
+    --brand-deep-text-soft:rgba(241,238,228,0.72);
+    --brick:#A6503A;
+    --line:rgba(22,33,44,0.14);
+    --line-deep:rgba(241,238,228,0.22);
+    --radius:7px;
+    --shadow:0 1px 2px rgba(22,33,44,0.07), 0 8px 20px -12px rgba(22,33,44,0.18);
+    --font-display:'Fjalla One', 'Arial Narrow', sans-serif;
+    --font-body:'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono:'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#11161B;
+      --surface:#182027;
+      --surface-dim:#0D1216;
+      --text:#EDE7D8;
+      --text-soft:rgba(237,231,216,0.66);
+      --accent:#DCB35F;
+      --accent-strong:#EAC784;
+      --accent-ink:#16212C;
+      --brand-deep:#0E1B2A;
+      --brand-deep-2:#0A141F;
+      --brand-deep-text:#F1EEE4;
+      --brand-deep-text-soft:rgba(241,238,228,0.68);
+      --brick:#C97256;
+      --line:rgba(237,231,216,0.16);
+      --line-deep:rgba(241,238,228,0.16);
+      --shadow:0 1px 2px rgba(0,0,0,0.4), 0 10px 24px -14px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#11161B;
+    --surface:#182027;
+    --surface-dim:#0D1216;
+    --text:#EDE7D8;
+    --text-soft:rgba(237,231,216,0.66);
+    --accent:#DCB35F;
+    --accent-strong:#EAC784;
+    --accent-ink:#16212C;
+    --brand-deep:#0E1B2A;
+    --brand-deep-2:#0A141F;
+    --brand-deep-text:#F1EEE4;
+    --brand-deep-text-soft:rgba(241,238,228,0.68);
+    --brick:#C97256;
+    --line:rgba(237,231,216,0.16);
+    --line-deep:rgba(241,238,228,0.16);
+    --shadow:0 1px 2px rgba(0,0,0,0.4), 0 10px 24px -14px rgba(0,0,0,0.6);
+  }
+
+  *{box-sizing:border-box;}
+  html{color-scheme:light dark;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding-inline:24px;
+  }
+  h1,h2,h3{
+    font-family:var(--font-display);
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    line-height:1.08;
+    text-wrap:balance;
+    margin:0;
+  }
+  h1{font-size:clamp(2.4rem,5.6vw,4.1rem);}
+  h2{font-size:clamp(1.7rem,3.4vw,2.3rem);}
+  h3{font-size:1.05rem; letter-spacing:0.03em;}
+  p{margin:0;}
+  a{color:inherit;}
+  .icon{width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-body); font-weight:700;
+    text-transform:uppercase; font-size:0.72rem; letter-spacing:0.12em;
+    color:var(--text-soft);
+  }
+  .lede{font-size:1.08rem; color:var(--text-soft); max-width:60ch;}
+
+  /* buttons */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:13px 22px;
+    font-family:var(--font-body); font-weight:700; font-size:0.88rem;
+    text-transform:uppercase; letter-spacing:0.06em;
+    border-radius:var(--radius);
+    text-decoration:none;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .btn:hover{transform:translateY(-1px);}
+  }
+  .btn-accent{background:var(--accent); color:var(--accent-ink); box-shadow:var(--shadow);}
+  .btn-accent:hover{background:var(--accent-strong);}
+  .btn-ghost{background:transparent; border-color:currentColor; color:var(--text);}
+  .btn-ghost-invert{background:transparent; border-color:var(--line-deep); color:var(--brand-deep-text);}
+  .btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+  /* header */
+  .site-header{
+    position:sticky; top:0; z-index:20;
+    background:var(--brand-deep);
+    border-bottom:1px solid var(--line-deep);
+  }
+  .header-inner{
+    max-width:1080px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    color:var(--brand-deep-text); text-decoration:none;
+    font-family:var(--font-display); text-transform:uppercase; letter-spacing:0.03em; font-size:1.05rem;
+  }
+  .brand-mark{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:34px; height:34px; border-radius:5px;
+    background:var(--accent); color:var(--accent-ink);
+    font-size:0.85rem; font-weight:800;
+  }
+  .nav-links{display:flex; gap:26px;}
+  .nav-links a{
+    color:var(--brand-deep-text-soft); text-decoration:none;
+    font-weight:600; font-size:0.86rem; letter-spacing:0.02em;
+    padding-block:4px; border-bottom:1.5px solid transparent;
+    transition:color 0.15s ease, border-color 0.15s ease;
+  }
+  .nav-links a:hover{color:var(--brand-deep-text); border-color:var(--accent);}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  /* hero */
+  .hero{background:var(--brand-deep); color:var(--brand-deep-text);}
+  .hero-inner{
+    max-width:1080px; margin:0 auto; padding:64px 24px 56px;
+    display:flex; align-items:center; gap:48px; flex-wrap:wrap;
+  }
+  .hero-copy{flex:1 1 420px; min-width:0; display:flex; flex-direction:column; gap:20px;}
+  .hero-copy .eyebrow{color:var(--brand-deep-text-soft);}
+  .hero-copy h1{color:var(--brand-deep-text);}
+  .hero-copy .lede{color:var(--brand-deep-text-soft);}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:4px;}
+  .open-tag{
+    display:inline-flex; align-items:center; gap:9px; align-self:flex-start;
+    padding:8px 14px 8px 10px; border:1px solid var(--line-deep); border-radius:999px;
+    font-size:0.78rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--brand-deep-text-soft);
+  }
+  .open-dot{width:9px; height:9px; border-radius:50%; background:var(--accent); flex-shrink:0; box-shadow:0 0 0 3px rgba(199,154,62,0.22);}
+  .hero-art{flex:1 1 260px; min-width:240px; max-width:420px;}
+  .hero-art svg{width:100%; height:auto; display:block;}
+
+  /* audience strip */
+  .audience{background:var(--surface-dim); border-bottom:1px solid var(--line);}
+  .audience-inner{max-width:1080px; margin:0 auto; padding:30px 24px; display:flex; flex-direction:column; gap:18px;}
+  .audience-label{font-weight:700; font-size:0.94rem;}
+  .audience-icons{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:28px;}
+  .audience-icons li{display:flex; align-items:center; gap:9px; color:var(--text-soft); font-size:0.92rem; font-weight:600;}
+  .audience-icons .icon{color:var(--accent-strong);}
+
+  /* sections generic */
+  section.block{padding:72px 0;}
+  .section-head{max-width:640px; margin-bottom:40px; display:flex; flex-direction:column; gap:12px;}
+  .section-head p{color:var(--text-soft); font-size:1rem;}
+
+  /* services */
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:820px){ .grid-3{grid-template-columns:1fr;} }
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px 26px; display:flex; flex-direction:column; gap:12px;
+    box-shadow:var(--shadow);
+  }
+  .card h3{color:var(--text);}
+  .card p{color:var(--text-soft); font-size:0.95rem;}
+  .card-tag{
+    align-self:flex-start; font-family:var(--font-mono); font-size:0.7rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.06em; color:var(--brick);
+  }
+
+  /* process */
+  .process-list{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; counter-reset:step;}
+  @media (max-width:820px){ .process-list{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .process-list{grid-template-columns:1fr;} }
+  .step{display:flex; flex-direction:column; gap:10px;}
+  .step-num{
+    font-family:var(--font-mono); font-weight:600; font-size:0.85rem; color:var(--accent-strong);
+    display:flex; align-items:center; gap:8px;
+  }
+  .step-num::before{content:counter(step); counter-increment:step;
+    width:26px; height:26px; border-radius:50%; border:1.5px solid var(--accent-strong);
+    display:inline-flex; align-items:center; justify-content:center; font-size:0.78rem; color:var(--text);
+  }
+  .step h3{font-size:1rem;}
+  .step p{color:var(--text-soft); font-size:0.92rem;}
+
+  /* pricing */
+  .pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch;}
+  @media (max-width:900px){ .pricing-grid{grid-template-columns:1fr;} }
+  .price-card{
+    position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:30px 26px; display:flex; flex-direction:column; gap:16px; box-shadow:var(--shadow);
+  }
+  .price-card.featured{border-color:var(--accent); border-width:2px;}
+  .popular-flag{
+    position:absolute; top:-13px; right:24px;
+    background:var(--accent); color:var(--accent-ink);
+    font-size:0.68rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em;
+    padding:5px 10px; border-radius:4px;
+  }
+  .price-card h3{color:var(--text);}
+  .price{font-family:var(--font-mono); font-weight:600; font-size:2.3rem; font-variant-numeric:tabular-nums; display:flex; align-items:baseline; gap:2px;}
+  .price .currency{font-size:1.2rem; font-weight:600;}
+  .price-period{font-size:0.85rem; color:var(--text-soft); font-weight:500;}
+  .price-desc{color:var(--text-soft); font-size:0.92rem;}
+  .price-features{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; flex:1;}
+  .price-features li{
+    display:flex; gap:9px; align-items:flex-start; font-size:0.9rem; color:var(--text);
+  }
+  .price-features .icon{width:16px; height:16px; margin-top:3px; color:var(--accent-strong);}
+  .price-note{text-align:center; color:var(--text-soft); font-size:0.88rem; margin-top:28px;}
+
+  /* about */
+  .about{background:var(--surface-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about-inner{max-width:1080px; margin:0 auto; padding:64px 24px; display:flex; gap:48px; flex-wrap:wrap; align-items:flex-start;}
+  .about-copy{flex:1 1 420px; display:flex; flex-direction:column; gap:16px;}
+  .about-copy p{color:var(--text-soft); font-size:1rem; max-width:56ch;}
+  .about-stats{flex:0 1 260px; display:flex; flex-direction:column; gap:22px; min-width:220px;}
+  .stat{border-left:3px solid var(--accent); padding-left:14px;}
+  .stat b{display:block; font-family:var(--font-mono); font-size:1.4rem; font-variant-numeric:tabular-nums;}
+  .stat span{color:var(--text-soft); font-size:0.86rem;}
+
+  /* faq */
+  .faq-list{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line);}
+  details{border-bottom:1px solid var(--line); padding:18px 0;}
+  summary{
+    cursor:pointer; font-weight:700; font-size:1rem; list-style:none;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:'+'; font-family:var(--font-mono); font-size:1.3rem; color:var(--accent-strong); flex-shrink:0;
+    transition:transform 0.15s ease;
+  }
+  details[open] summary::after{transform:rotate(45deg);}
+  details p{color:var(--text-soft); margin-top:12px; font-size:0.95rem; max-width:65ch;}
+
+  /* contact / footer */
+  .contact{background:var(--brand-deep); color:var(--brand-deep-text);}
+  .contact-inner{max-width:1080px; margin:0 auto; padding:72px 24px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:18px;}
+  .contact h2{color:var(--brand-deep-text); max-width:16ch;}
+  .contact p{color:var(--brand-deep-text-soft); max-width:50ch;}
+  .contact-email{
+    font-family:var(--font-mono); font-size:1.15rem; color:var(--accent-strong);
+    text-decoration:none; border-bottom:1.5px solid transparent;
+  }
+  .contact-email:hover{border-color:var(--accent-strong);}
+
+  footer{background:var(--brand-deep-2); color:var(--brand-deep-text-soft); font-size:0.82rem;}
+  .footer-inner{
+    max-width:1080px; margin:0 auto; padding:22px 24px;
+    display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">DJ</span>
+      Dan&nbsp;Joyce
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#work">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-accent" href="mailto:contact@iamdanjoyce.com">Get in touch</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24"><path d="M12 22s7-7.58 7-13a7 7 0 1 0-14 0c0 5.42 7 13 7 13Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Serving Bishop Auckland &amp; County Durham
+        </p>
+        <h1>Websites that get your business found on the high street of the internet.</h1>
+        <p class="lede">I design and build fast, easy-to-manage websites for independent shops, trades and services around Bishop Auckland — so people searching nearby find you first, not the big chains.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="mailto:contact@iamdanjoyce.com">Start your project</a>
+          <a class="btn btn-ghost-invert" href="#pricing">See pricing</a>
+        </div>
+        <div class="open-tag"><span class="open-dot" aria-hidden="true"></span> Open for new projects this month</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke="#E4C783" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="10" y1="200" x2="410" y2="200"/>
+            <rect x="20" y="90" width="90" height="110"/>
+            <path d="M14 90 L65 55 L116 90"/>
+            <rect x="45" y="150" width="40" height="50"/>
+            <line x1="35" y1="105" x2="35" y2="130"/>
+            <line x1="95" y1="105" x2="95" y2="130"/>
+            <rect x="135" y="65" width="120" height="135"/>
+            <path d="M130 65 h130 v20 h-130 z" stroke-dasharray="6 7"/>
+            <line x1="150" y1="95" x2="150" y2="135"/>
+            <line x1="185" y1="95" x2="185" y2="135"/>
+            <line x1="220" y1="95" x2="220" y2="135"/>
+            <rect x="175" y="150" width="40" height="50"/>
+            <rect x="280" y="105" width="100" height="95"/>
+            <path d="M274 105 h112 v16 h-112 z"/>
+            <line x1="296" y1="125" x2="296" y2="155"/>
+            <line x1="330" y1="125" x2="330" y2="155"/>
+            <line x1="364" y1="125" x2="364" y2="155"/>
+            <rect x="315" y="165" width="35" height="35"/>
+          </g>
+          <g fill="none" stroke="#F1EEE4" stroke-opacity="0.35" stroke-width="1.4">
+            <line x1="65" y1="55" x2="65" y2="90"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="audience">
+    <div class="audience-inner">
+      <p class="audience-label">Built for the businesses that make Bishop Auckland's high street work</p>
+      <ul class="audience-icons">
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z"/><path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17"/><line x1="7" y1="3" x2="7" y2="6"/><line x1="11" y1="3" x2="11" y2="6"/></svg> Cafés &amp; takeaways</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="m14.7 6.3 3 3-8.2 8.2a2.1 2.1 0 0 1-1.5.6H5v-3a2.1 2.1 0 0 1 .6-1.5Z"/><path d="M17.5 3.5a2.1 2.1 0 0 1 3 3L19 8l-3-3Z"/></svg> Trades &amp; tradespeople</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><circle cx="7" cy="6" r="2.5"/><circle cx="7" cy="18" r="2.5"/><line x1="19" y1="4" x2="9" y2="14"/><line x1="9" y1="10" x2="19" y2="20"/></svg> Salons &amp; barbers</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Shops &amp; retailers</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Services</p>
+        <h2>Three ways to work together</h2>
+        <p>Whether you're starting from nothing or your current site is holding you back, there's a straightforward option.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="card-tag">New build</span>
+          <h3>New website</h3>
+          <p>A complete site built around what your customers actually need to know: what you do, where you are, and how to book or buy. Live in 2–3 weeks.</p>
+        </div>
+        <div class="card">
+          <span class="card-tag">Rebuild</span>
+          <h3>Refresh &amp; rebuild</h3>
+          <p>Got a site already, but it looks dated or doesn't work on phones? I'll rebuild it properly, keep what's working, and fix what isn't.</p>
+        </div>
+        <div class="card">
+          <span class="card-tag">Retainer</span>
+          <h3>Ongoing care</h3>
+          <p>Opening hours change, prices change, you run a seasonal offer. I keep your site current so you never have to touch the code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>From first chat to live site</h2>
+        <p>No jargon, no waiting weeks for a reply. Most projects go from enquiry to launch in under a month.</p>
+      </div>
+      <div class="process-list">
+        <div class="step">
+          <span class="step-num">Chat</span>
+          <h3>Tell me about the business</h3>
+          <p>A call or a coffee near Newgate Street — what you sell, who your customers are, what's frustrating about your current site (if you have one).</p>
+        </div>
+        <div class="step">
+          <span class="step-num">Plan</span>
+          <h3>A simple proposal</h3>
+          <p>You get a clear plan: what pages, what it'll cost, and when it'll be ready. No surprises later.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">Build</span>
+          <h3>Design &amp; build</h3>
+          <p>I build the site and share progress as I go, so you can see it taking shape and ask for changes early.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">Launch</span>
+          <h3>Live, and findable</h3>
+          <p>Site goes live on your own domain, connected to Google Business Profile, and I show you how to make small edits yourself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="pricing" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Pricing</p>
+        <h2>Straightforward, one-off pricing</h2>
+        <p>Fixed prices, agreed before any work starts. No hourly billing, no hidden costs.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Starter</h3>
+          <div class="price"><span class="currency">£</span>480</div>
+          <p class="price-period">one-off</p>
+          <p class="price-desc">A single, well-built page for a trade or small shop that just needs to be found and contacted.</p>
+          <ul class="price-features">
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> One-page site, built for mobile</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Contact details &amp; opening hours</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Google Business Profile set up</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Domain &amp; hosting set up for you</li>
+          </ul>
+          <a class="btn btn-ghost" href="mailto:contact@iamdanjoyce.com">Enquire</a>
+        </div>
+        <div class="price-card featured">
+          <span class="popular-flag">Most popular</span>
+          <h3>Business</h3>
+          <div class="price"><span class="currency">£</span>950</div>
+          <p class="price-period">one-off</p>
+          <p class="price-desc">A full site for a business with more to show: services, gallery, reviews, and a way for people to enquire or book.</p>
+          <ul class="price-features">
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Up to 6 pages</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Photo gallery &amp; customer reviews</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Booking or enquiry form</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Local search (SEO) set up</li>
+          </ul>
+          <a class="btn btn-accent" href="mailto:contact@iamdanjoyce.com">Enquire</a>
+        </div>
+        <div class="price-card">
+          <h3>Care plan</h3>
+          <div class="price"><span class="currency">£</span>39</div>
+          <p class="price-period">per month</p>
+          <p class="price-desc">Ongoing hosting, updates and small edits, so the site stays current without you needing to touch it.</p>
+          <ul class="price-features">
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Hosting &amp; domain renewal included</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Up to 30 minutes of edits monthly</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Security &amp; backup monitoring</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg> Cancel anytime</li>
+          </ul>
+          <a class="btn btn-ghost" href="mailto:contact@iamdanjoyce.com">Enquire</a>
+        </div>
+      </div>
+      <p class="price-note">Bigger project in mind, or need a shop with online payments? Get in touch and I'll quote it properly.</p>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-inner">
+      <div class="about-copy">
+        <p class="eyebrow">About</p>
+        <h2>Based in Bishop Auckland, not a call centre</h2>
+        <p>I'm Dan — I build websites for the independent businesses around Bishop Auckland and County Durham, from cafés on Newgate Street to trades working across the Dales. I've been the customer standing outside a shop checking Google for opening hours that turned out to be wrong, or a phone number that didn't connect. That's the gap I fix.</p>
+        <p>You get plain-English advice, a site that actually loads quickly on a phone in a car park with two bars of signal, and someone local who'll pick up the phone.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat"><b>2–3 wks</b><span>typical time from enquiry to launch</span></div>
+        <div class="stat"><b>100%</b><span>mobile-first, built to load fast</span></div>
+        <div class="stat"><b>1</b><span>point of contact, start to finish</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions business owners actually ask</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>I don't know anything about websites — is that a problem?</summary>
+          <p>Not at all — most clients don't, and don't need to. I handle the technical side and explain everything in plain terms. You just need to know your business.</p>
+        </details>
+        <details>
+          <summary>Do I need to buy a domain and hosting myself?</summary>
+          <p>No. I can register your domain (e.g. yourbusiness.co.uk) and set up hosting for you as part of the build, or use ones you already own if you have them.</p>
+        </details>
+        <details>
+          <summary>Can I update the site myself later?</summary>
+          <p>Yes. Every site includes a simple way to update text, photos and opening hours, and I'll walk you through it. If you'd rather not, the Care Plan covers small edits for you.</p>
+        </details>
+        <details>
+          <summary>Do you only work with businesses in Bishop Auckland?</summary>
+          <p>Bishop Auckland and County Durham are the core, but I work with clients across the North East. If you're further afield, get in touch and we'll sort a call.</p>
+        </details>
+        <details>
+          <summary>What if I need changes after the site is live?</summary>
+          <p>Small fixes in the first two weeks after launch are included free. After that, the Care Plan covers ongoing edits, or I'm happy to quote one-off changes.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="contact-inner">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Let's get your business online</h2>
+      <p>Tell me a bit about your business and what you're after. I reply to every enquiry within one working day.</p>
+      <a class="contact-email" href="mailto:contact@iamdanjoyce.com">contact@iamdanjoyce.com</a>
+      <a class="btn btn-accent" href="mailto:contact@iamdanjoyce.com" style="margin-top:6px;">Email me about your project</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>Dan Joyce — Web design for Bishop Auckland &amp; County Durham</span>
+    <span>contact@iamdanjoyce.com</span>
+  </div>
+</footer>
+
+</body>
+</html>
