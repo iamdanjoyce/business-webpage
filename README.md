@@ -10,6 +10,7 @@ Website for Dan Joyce Web Design, served by GitHub Pages at https://iamdanjoyce.
 | `docs/preview/index.html` | Full site, in progress at `/preview/` (not indexed by search engines) |
 | `docs/content/settings.json` | Site text and pricing, edited through the CMS |
 | `docs/admin/` | Decap CMS editor (`/admin` on the live site) |
+| `docs/brand/` | Logo files: full lockup, compact, pin mark, app icon, favicon (light and dark versions) |
 | `docs/CNAME` | Custom domain for GitHub Pages |
 
 ## Editing
