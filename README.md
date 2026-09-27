@@ -6,7 +6,8 @@ Website for Dan Joyce Web Design, served by GitHub Pages at https://iamdanjoyce.
 
 | Path | Purpose |
 | --- | --- |
-| `docs/index.html` | The website |
+| `docs/index.html` | Coming-soon page (the live home page for now) |
+| `docs/preview/index.html` | Full site, in progress at `/preview/` (not indexed by search engines) |
 | `docs/content/settings.json` | Site text and pricing, edited through the CMS |
 | `docs/admin/` | Decap CMS editor (`/admin` on the live site) |
 | `docs/CNAME` | Custom domain for GitHub Pages |
